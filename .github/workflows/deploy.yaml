@@ -3,7 +3,7 @@ name: Run npm start and print commit hashes
 on:
   push:
     branches:
-      - main  # Run this workflow only on pushes to the main branch
+      - Prod-EN  # Run this workflow only on pushes to the main branch
 
 jobs:
   build:

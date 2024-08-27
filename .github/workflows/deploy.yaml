@@ -3,7 +3,7 @@ name: Run npm start and print commit hashes
 on:
   push:
     branches:
-      - Prod-EN  # Run this workflow only on pushes to the main branch
+      - Prod-EN  # Run this workflow only on pushes to the Prod-EN branch
 
 jobs:
   build:
@@ -18,11 +18,16 @@ jobs:
       with:
         node-version: '18'  # Use the Node.js version that matches your project
 
+    - name: Navigate to project directory
+      run: cd my-node-project
+
     - name: Install dependencies
       run: npm install
+      working-directory: my-node-project
 
     - name: Run npm start
       run: npm start
+      working-directory: my-node-project
 
     - name: Print the current HEAD commit hash
       run: |

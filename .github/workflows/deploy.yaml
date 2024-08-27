@@ -1,0 +1,39 @@
+name: Run npm start and print commit hashes
+
+on:
+  push:
+    branches:
+      - Prod-FR  
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '18'  
+    - name: Navigate to project directory
+      run: cd my-node-project
+
+    - name: Install dependencies
+      run: npm install
+      working-directory: my-node-project
+
+    - name: Run npm start
+      run: npm start
+      working-directory: my-node-project
+
+    - name: Print the current HEAD commit hash
+      run: |
+        echo "Current HEAD commit hash: $(git rev-parse HEAD)"
+      shell: bash  # Ensure we're using bash for command substitution
+
+    - name: Print the latest commit hash
+      run: |
+        echo "Latest commit hash: $(git log -1 --format=%H)"
+      shell: bash  # Ensure we're using bash for command substitution

@@ -1,9 +1,8 @@
 name: Run npm start and print commit hashes
 
 on:
-  push:
-    branches:
-      - Prod-EN  # Run this workflow only on pushes to the Prod-EN branch
+  repository_dispatch:
+    types: [trigger-prod-en]
 
 jobs:
   build:

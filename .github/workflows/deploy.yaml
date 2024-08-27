@@ -2,7 +2,7 @@ name: Run npm start and print commit hashes
 
 on:
  repository_dispatch:
-  types: [event-1]
+  types: event-1
 
 jobs:
   build:

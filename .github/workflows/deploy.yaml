@@ -1,9 +1,8 @@
 name: Run npm start and print commit hashes
 
 on:
-  push:
-    branches:
-      - Prod-FR  
+   repository_dispatch:
+    types: [trigger-prod-fr] 
 
 jobs:
   build:
